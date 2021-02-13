@@ -17,10 +17,15 @@ Generally used adding the following flag to any `kubectl` command `--namespace=<
 ## Interacting w/ Running Pods
 * `kubectl logs <pod name>` - show logs of a particular running pod
 * `kubectl exec -it <pod name>` - create a shell inside a pod
-* `kubectl attach -t <pd name>` - attack to running process in pod
+* `kubectl attach -t <pod name>` - attack to running process in pod
 * `kubectl cp <pod name>:</path/to/pod/files> </path/to/local/file>` - copy a file from the pod to local machine
 * `kubectl port-forward <pod name> 8080:80` - forwards traffic from local port 8080 to remote container port 80
 
 ## Monitoring Nodes/Pods on a cluser
 * `kubectl top nodes` - display total cpu/memory in use by nodes
 * `kubectl top opods` - dispaly all pods and resource usage
+
+## Labels
+* `kubectl label <resource type> <obj name> "<label key>=<label value>"` - add a label to an existing object
+* `kubectl get <resource type> -L <label>` - kubectl w/ specified label value as a column
+* `kubectl get <resource type> --selector="<label key>=<label value>"` - specify resource types by label ([selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) has its own operators)
