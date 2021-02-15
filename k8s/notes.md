@@ -29,3 +29,8 @@ Generally used adding the following flag to any `kubectl` command `--namespace=<
 * `kubectl label <resource type> <obj name> "<label key>=<label value>"` - add a label to an existing object
 * `kubectl get <resource type> -L <label>` - kubectl w/ specified label value as a column
 * `kubectl get <resource type> --selector="<label key>=<label value>"` - specify resource types by label ([selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) has its own operators)
+
+## Scaling
+* `kubectl scale replicasets <rs name> replicas=<num>` - scale an existing replicaset up to num replicas (can also be achieved by reapplying RS manifest with updated value)
+* `kubectl autoscale rs <rs name> --min=<min num> --max=<max num> --cpu-percent=<cpu utilisation>` - enable auto scaling based on cpu (assumes heapster/HPA is enabled)
+* `kubectl delete rs <rs name> --cascade=false` - delete a replica set but not the pods that were managed by it (by default pods are also deleted)
