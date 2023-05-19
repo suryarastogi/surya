@@ -5,8 +5,10 @@ services:
     build: 
       context: ./python/
       dockerfile: ./Dockerfile
-    command: bash -c "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root"
+    command: bash -c "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --NotebookApp.token=password"
     ports:
       - "8888:8888"
     volumes:
     - ./python/notebooks:/opt/app/data
+    env_file:
+    - dev-variables.env
